@@ -20,8 +20,7 @@ pipeline {
                 sh'''
                     ls -ltr
                     pwd
-                    cd roboshop-infra-standard/01-vpc
-                    terraform plan
+                    cd roboshop-infra-standard/01-vpc                    
                 '''
             }
         }
@@ -31,14 +30,14 @@ pipeline {
             }
         }
 
-        stage('Apply') {
+        stage('Destroy') {
             steps{
                 
                 sh '''
                     pwd
                     ls -ltr
                     cd roboshop-infra-standard/01-vpc
-                    terraform apply -auto-approve
+                    terraform destroy -auto-approve
                 '''
             }
         }
